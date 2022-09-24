@@ -1,11 +1,11 @@
-# @fastify-firebase-ts
+# fastify-firebase
 
-Adding firebase's service such as Auth, Firestore, Cloud Storage, Cloud Messaging, and more.
+Adding firebase-admin service into fastify with types.
 ## Install
 ```
-npm i @danny-weebo/fastify-firebase-ts
-yarn add @danny-weebo/fastify-firebase-ts
-pnpm add @danny-weebo/fastify-firebase-ts
+npm i @dannyblv/fastify-firebase
+yarn add @dannyblv/fastify-firebase
+pnpm add @dannyblv/fastify-firebase
 ```
 
 ## Usage
@@ -15,12 +15,27 @@ This plugin will add the firebase namespace in your Fastify instance.
 Example:
 ```ts
 import Fastify from 'fastify';
-import fastifyFirebase from 'fastify-firbase-ts';
+import fastifyFirebase from 'fastify-firbase';
 import firebaseConfig from '../firebase.json'; // <-- this json can be downloaded from firebase console (aka cert file).
 
 const server = Fastify({logger: true});
 
 server.register(fastifyFirebase, firebaseConfig); // simply hook the plugin with the cert file.
+
+server.get('/getAllUsers', async (request, reply) => {
+  // both request and reply contains server object
+  // means we can find firebase object on both
+  // request.server.firebase | reply.server.firebase
+  const firebase = request.server.firebase;
+
+  try {
+    const snapshot = await firebase.firestore().collection('Users').get();
+    const arrayOfUsers = snapshot.docs.map((doc) => doc.data());
+    reply.send(arrayOfUsers);
+  } catch (error) {
+    throw new Error(error);
+  }
+});
 
 (async () => {
   try {

@@ -1,20 +1,30 @@
 {
-  "name": "fastify-firebase-ts",
+  "name": "fastify-firebase",
   "version": "1.0.0",
   "description": "fastify firebase plugin",
-  "main": "index.ts",
+  "main": "index.js",
   "repository": "https://github.com/Danny-weebo/fastify-firebase-ts.git",
   "author": "Danny Braunstein<dannyb9737@gmail.com>",
   "license": "MIT",
+  "types": "index.d.ts",
+  "scripts": {
+    "test": "tap --files=index.test.js --no-coverage"
+  },
   "dependencies": {
     "fastify-plugin": "^4.2.1",
-    "firebase-admin": "^11.0.1",
-    "lodash.camelcase": "^4.3.0"
+    "firebase-admin": "^11.0.1"
   },
   "devDependencies": {
-    "fastify": "^4.6.0"
+    "fastify": "^4.6.0",
+    "tap": "^16.3.0"
   },
   "publishConfig": {
     "access": "public"
   },
+  "keywords": [
+    "fastify",
+    "firebase",
+    "fastify-firebase",
+    "fastifyFirebase"
+  ]
 }
