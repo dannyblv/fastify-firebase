@@ -3,9 +3,9 @@
 Adding firebase's service such as Auth, Firestore, Cloud Storage, Cloud Messaging, and more.
 ## Install
 ```
-npm i @danny-weebo/fastify-firebase-ts
-yarn add @danny-weebo/fastify-firebase-ts
-pnpm add @danny-weebo/fastify-firebase-ts
+npm i @Danny-weebo/fastify-firebase-ts
+yarn add @Danny-weebo/fastify-firebase-ts
+pnpm add @Danny-weebo/fastify-firebase-ts
 ```
 
 ## Usage
