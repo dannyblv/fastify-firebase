@@ -1,12 +1,16 @@
 {
   "name": "fastify-firebase",
   "version": "1.0.0",
-  "description": "fastify firebase plugin",
+  "description": "add firebase-admin to fastify",
   "main": "index.js",
-  "repository": "https://github.com/Danny-weebo/fastify-firebase-ts.git",
-  "author": "Danny Braunstein<dannyb9737@gmail.com>",
+  "repository": "https://github.com/dannyblv/fastify-firebase.git",
+  "author": "Danny Braunstein (https://github.com/dannyblv)",
   "license": "MIT",
   "types": "index.d.ts",
+  "bugs": {
+    "url": "https://github.com/dannyblv/fastify-firebase/issues"
+  },
+  "homepage": "https://github.com/dannyblv/fastify-firebase#readme",
   "scripts": {
     "test": "tap --files=index.test.js --no-coverage"
   },

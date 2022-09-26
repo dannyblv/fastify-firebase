@@ -1,6 +1,8 @@
 # fastify-firebase
 
 Adding firebase-admin service into fastify with types.
+<img width="1144" alt="Firebase modules are presented in suggestions window" src="https://user-images.githubusercontent.com/6795014/192258871-36a637dc-5f82-431d-9c75-bc5a5fe57950.png">
+
 ## Install
 ```
 npm i @dannyblv/fastify-firebase
@@ -16,11 +18,11 @@ Example:
 ```ts
 import Fastify from 'fastify';
 import fastifyFirebase from 'fastify-firbase';
-import firebaseConfig from '../firebase.json'; // <-- this json can be downloaded from firebase console (aka cert file).
+import firebasePrivateKeyJson from '../firebase.json'; // <-- private key file can be downloaded from firebase console (aka cert file).
 
 const server = Fastify({logger: true});
 
-server.register(fastifyFirebase, firebaseConfig); // simply hook the plugin with the cert file.
+server.register(fastifyFirebase, firebasePrivateKeyJson); // simply hook the plugin with the cert file.
 
 server.get('/getAllUsers', async (request, reply) => {
   // both request and reply contains server object
@@ -49,8 +51,9 @@ server.get('/getAllUsers', async (request, reply) => {
 
 ```
 
-
 ## Useful links
+- [How to generate a private key file for your service account](https://firebase.google.com/docs/admin/setup#node.js)
+- [Firebase's Settings > Service Accounts.](https://console.firebase.google.com/project/_/settings/serviceaccounts/adminsdk)
 - [Fastify](https://www.fastify.io/)
 - [fastify-plugin NPM](https://www.npmjs.com/package/fastify-plugin)
 - [firebase-admin NPM](https://www.npmjs.com/package/firebase-admin)
