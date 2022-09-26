@@ -30,7 +30,6 @@ test('cert supports camelCase and snake-case + firebase throws error', (t) => {
 });
 
 test('happy path', (t) => {
-  console.log('process.argv', process.argv);
   register(t, JSON.parse(process.env.FIREBASE_CONFIG), (_error, fastifyInstance) => {
     t.ok(fastifyInstance.firebase);
     t.ok(fastifyInstance.firebase.auth);

@@ -5,9 +5,9 @@ Adding firebase-admin service into fastify with types.
 
 ## Install
 ```
-npm i @dannyblv/fastify-firebase
-yarn add @dannyblv/fastify-firebase
-pnpm add @dannyblv/fastify-firebase
+npm i fastify-firebase
+yarn add fastify-firebase
+pnpm add fastify-firebase
 ```
 
 ## Usage
@@ -17,7 +17,7 @@ This plugin will add the firebase namespace in your Fastify instance.
 Example:
 ```ts
 import Fastify from 'fastify';
-import fastifyFirebase from 'fastify-firbase';
+import fastifyFirebase from 'fastify-firebase';
 import firebasePrivateKeyJson from '../firebase.json'; // <-- private key file can be downloaded from firebase console (aka cert file).
 
 const server = Fastify({logger: true});
@@ -57,6 +57,7 @@ server.get('/getAllUsers', async (request, reply) => {
 - [Fastify](https://www.fastify.io/)
 - [fastify-plugin NPM](https://www.npmjs.com/package/fastify-plugin)
 - [firebase-admin NPM](https://www.npmjs.com/package/firebase-admin)
+- [fastify-firebase NPM](https://www.npmjs.com/package/fastify-firebase)
 
 ## License
 Licensed under [MIT](./LICENSE).

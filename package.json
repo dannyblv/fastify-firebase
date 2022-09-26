@@ -1,8 +1,9 @@
 {
   "name": "fastify-firebase",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "add firebase-admin to fastify",
   "main": "index.js",
+
   "repository": "https://github.com/dannyblv/fastify-firebase.git",
   "author": "Danny Braunstein (https://github.com/dannyblv)",
   "license": "MIT",
@@ -28,7 +29,12 @@
   "keywords": [
     "fastify",
     "firebase",
+    "fastifyFirebase",
     "fastify-firebase",
-    "fastifyFirebase"
+    "fastify-firebase-typescript",
+    "fastify-firestore",
+    "fastify-firestore-typescript",
+    "fastify-firebase-auth",
+    "fastify-firebase-auth-ts"
   ]
 }
