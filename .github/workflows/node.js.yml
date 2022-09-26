@@ -22,15 +22,15 @@ jobs:
       - name: step 1 - actions/checkout@v3
         uses: actions/checkout@v3
     
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Step 2 - Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
 
-      - name: installing deps
+      - name: Step 3 - Installing deps
         run: npm i
-      - name: running test
+      - name: Running test command
         env:
           FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
         run: npm run test
