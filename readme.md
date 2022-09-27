@@ -1,5 +1,5 @@
 # fastify-firebase
-<img src="https://github.com/dannyblv/fastify-firebase/actions/workflows/node.js.yml/badge.svg" alt="CI status" /> <a href="https://www.npmjs.com/package/fastify-firebase" title="View this project on NPM"><img src="https://img.shields.io/npm/v/fastify-firebase" alt="NPM version" /></a>
+<img src="https://github.com/dannyblv/fastify-firebase/actions/workflows/node.js.yml/badge.svg" alt="CI status" /> <a href="https://www.npmjs.com/package/fastify-firebase" title="View this project on NPM"><img src="https://img.shields.io/npm/v/fastify-firebase" alt="NPM version" /></a> <img src="https://img.shields.io/npm/dw/fastify-firebase" alt="Weekly downloads" />
 
 Fastify firebase-admin plugin, adds firebase object into fastify's instance with typescript support.
 <img width="1144" alt="Firebase modules are presented in suggestions window" src="https://user-images.githubusercontent.com/6795014/192258871-36a637dc-5f82-431d-9c75-bc5a5fe57950.png">
