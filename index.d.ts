@@ -16,4 +16,5 @@ declare const fastifyFirebase: FastifyPluginCallback<{
 	privateKey: string;
 	clientEmail: string;
 }>;
+
 export default fastifyFirebase;
