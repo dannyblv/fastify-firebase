@@ -1,6 +1,6 @@
 {
   "name": "fastify-firebase",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "add firebase-admin to fastify with typescript support",
   "main": "index.js",
   "repository": "https://github.com/dannyblv/fastify-firebase.git",
@@ -16,11 +16,11 @@
   },
   "dependencies": {
     "fastify-plugin": "^4.5.1",
-    "firebase-admin": "^12.0.0"
+    "firebase-admin": "^12.2.0"
   },
   "devDependencies": {
-    "fastify": "^4.25.1",
-    "tap": "^18.6.1"
+    "fastify": "^4.28.1",
+    "tap": "^21.0.0"
   },
   "publishConfig": {
     "access": "public"
