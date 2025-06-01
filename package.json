@@ -1,6 +1,6 @@
 {
   "name": "fastify-firebase",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "add firebase-admin to fastify with typescript support",
   "main": "index.js",
   "repository": "https://github.com/dannyblv/fastify-firebase.git",
