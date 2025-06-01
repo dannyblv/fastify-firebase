@@ -1,5 +1,5 @@
 import fastify from 'fastify';
-import fastifyFirebase  from '.';
+import fastifyFirebase from './index.js';
 import firebaseCertJson from './firebase.json'; // this file can be downloaded from firebase console.
 
 const fastifyInstance = fastify();

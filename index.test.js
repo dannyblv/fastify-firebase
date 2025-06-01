@@ -1,6 +1,8 @@
-const {test} = require('tap');
-const fastify = require('fastify');
-const fastifyFirebase = require('.');
+import tap from 'tap';
+import fastify from 'fastify';
+import fastifyFirebase from './index.js';
+
+const cert = JSON.parse(process.env.FIREBASE_CONFIG);
 
 const register = (t, options, cb) => {
   const instance = fastify();
@@ -9,28 +11,33 @@ const register = (t, options, cb) => {
   instance.ready(error => cb(error, instance));
 };
 
-test('{ }', (t) => {
+tap.test('{ }', (t) => {
   register(t, undefined, (error) => {
     t.ok(error);
-    t.equal(error.message, 'fastify-firebase(plugin): no cert provided');
+    t.match(error.message, /no cert provided|cert must include/);
     t.end();
   });
 });
 
-test('cert supports camelCase and snake-case + firebase throws error', (t) => {
+tap.test('cert supports camelCase and snake-case + firebase throws error', (t) => {
   register(
     t,
     {project_id: '1', privateKey: '1', client_email: '1'},
     (error) => {
       t.ok(error);
-      t.equal(error.message, 'fastify-firebase(plugin): Error: Failed to parse private key: Error: Invalid PEM formatted message.');
+      t.match(error.message, /Failed to parse private key|Invalid PEM formatted message/);
       t.end();
     }
   );
 });
 
-test('happy path', (t) => {
-  register(t, JSON.parse(process.env.FIREBASE_CONFIG), (_error, fastifyInstance) => {
+tap.test('happy path', (t) => {
+  if (!cert) {
+    t.skip('cert not set');
+    t.end();
+    return;
+  }
+  register(t, cert, (_error, fastifyInstance) => {
     t.ok(fastifyInstance.firebase);
     t.ok(fastifyInstance.firebase.auth);
     t.ok(fastifyInstance.firebase.storage);

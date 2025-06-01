@@ -1,29 +1,36 @@
-const fp = require('fastify-plugin');
-const fb = require('firebase-admin');
+import fp from 'fastify-plugin';
+import fb from 'firebase-admin';
 
-const fastifyFirebase = (server, cert, done) => {
-  if (!Object.keys(cert).length) {
-    done(new Error('fastify-firebase(plugin): no cert provided'));
-    return;
+const fastifyFirebase = async (fastify, opts) => {
+  const cert = opts || {};
+  // Normalize keys to camelCase
+  const projectId = cert.projectId || cert.project_id;
+  const privateKey = cert.privateKey || cert.private_key;
+  const clientEmail = cert.clientEmail || cert.client_email;
+
+  if (!projectId || !privateKey || !clientEmail) {
+    throw new Error('fastify-firebase(plugin): cert must include projectId/project_id, privateKey/private_key, and clientEmail/client_email');
   }
 
+  // Prevent multiple initializations
+  let firebaseInstance;
   try {
-    const firebaseInstance = fb.initializeApp(
-      {
-        projectId: cert.projectId,
-        credential: fb.credential.cert(cert),
-      },
-      'default'
-    );
+    if (fb.apps && fb.apps.length > 0) {
+      firebaseInstance = fb.app('default');
+    } else {
+      firebaseInstance = fb.initializeApp({
+        projectId,
+        credential: fb.credential.cert({ projectId, privateKey, clientEmail }),
+      }, 'default');
+    }
 
-    server.decorate('firebase', firebaseInstance);
-    done();
+    fastify.decorate('firebase', firebaseInstance);
   } catch (error) {
-    done(new Error(`fastify-firebase(plugin): ${error}`));
+    throw new Error(`fastify-firebase(plugin): ${error.message || error}`);
   }
 };
 
-module.exports = fp(fastifyFirebase, {
-  fastify: '>=1.1.0',
+export default fp(fastifyFirebase, {
+  fastify: '>=5.0.0',
   name: 'fastify-firebase',
 });
