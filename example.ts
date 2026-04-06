@@ -1,30 +1,28 @@
 import fastify from 'fastify';
 import fastifyFirebase from './index.js';
-import firebaseCertJson from './firebase.json'; // this file can be downloaded from firebase console.
+import firebaseCertJson from './firebase.json'; // download from Firebase console
 
-const fastifyInstance = fastify();
+const app = fastify();
 
-// registering fastifyFirebase plugin with firebase's cert json file.
-fastifyInstance.register(fastifyFirebase, firebaseCertJson);
+// Option 1: Register with cert JSON file
+app.register(fastifyFirebase, firebaseCertJson);
 
-fastifyInstance.get('/getAllUsers', async (request, reply) => {
-  const firebase = request.server.firebase;
+// Option 2: On GCP (Cloud Run, Cloud Functions)  no cert needed
+// app.register(fastifyFirebase);
 
-  try {
-    const snapshot = await firebase.firestore().collection('Users').get();
-    const arrayOfUsers = snapshot.docs.map((doc) => doc.data());
-    reply.send(arrayOfUsers);
-  } catch (error) {
-    throw new Error(error);
-  }
+// Option 3: With extra options
+// app.register(fastifyFirebase, {
+//   ...firebaseCertJson,
+//   name: 'my-app',
+//   databaseURL: 'https://my-app.firebaseio.com',
+//   storageBucket: 'my-app.appspot.com',
+// });
+
+app.get('/users', async (request, reply) => {
+  const snapshot = await request.server.firebase.firestore().collection('Users').get();
+  reply.send(snapshot.docs.map((doc) => doc.data()));
 });
 
-(async () => {
-  try {
-    const address = await fastifyInstance.listen({port: 3000});
-    console.log(`Server listening at ${address}`);
-  } catch (error) {
-    fastifyInstance.log.error(error);
-    process.exit(1);
-  }
-})();
+app.listen({ port: 3000 }).then((address) => {
+  console.log(`Server listening at ${address}`);
+});

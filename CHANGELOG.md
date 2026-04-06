@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.0.0] - 2026-04-06
+### Changed
+- **BREAKING**: Registering without options no longer throws  uses Application Default Credentials (ADC) for GCP environments.
+- New options: `databaseURL` and `storageBucket`.
+- Custom app name via `name` option (default: `'default'`).
+- Firebase app is auto-deleted on Fastify close.
+- Error messages are more specific (tells you exactly which fields are missing).
+- Requires Node.js >= 18 (`engines` field added).
+- Updated dependencies: `firebase-admin@^13.7.0`, `fastify-plugin@^5.1.0`, `fastify@^5.8.4`.
+- Exported `FastifyFirebaseOptions` type.
+- Improved keywords for better npm discoverability.
+- CI runs on Node 22.
+
 ## [2.0.0] - 2025-06-01
 ### Changed
 - BREAKING: Require Fastify v5+ and fastify-plugin v5+.

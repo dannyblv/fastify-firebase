@@ -1,7 +1,7 @@
 {
   "name": "fastify-firebase",
-  "version": "2.0.1",
-  "description": "add firebase-admin to fastify with typescript support",
+  "version": "3.0.0",
+  "description": "Fastify v5+ plugin for firebase-admin with TypeScript support, ADC, custom app names, and auto-cleanup",
   "main": "index.js",
   "repository": "https://github.com/dannyblv/fastify-firebase.git",
   "author": "Danny Braunstein (https://github.com/dannyblv)",
@@ -11,30 +11,37 @@
     "url": "https://github.com/dannyblv/fastify-firebase/issues"
   },
   "homepage": "https://github.com/dannyblv/fastify-firebase#readme",
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "test": "yarn run tap --disable-coverage --files=index.test.js"
   },
   "dependencies": {
-    "fastify-plugin": "^5.0.1",
-    "firebase-admin": "^13.4.0"
+    "fastify-plugin": "^5.1.0",
+    "firebase-admin": "^13.7.0"
   },
   "devDependencies": {
-    "fastify": "^5.3.3",
-    "tap": "^21.1.0"
+    "fastify": "^5.8.4",
+    "tap": "^21.6.3"
   },
   "publishConfig": {
     "access": "public"
   },
   "keywords": [
     "fastify",
+    "fastify-plugin",
     "firebase",
-    "fastifyFirebase",
-    "fastify-firebase",
-    "fastify-firebase-typescript",
-    "fastify-firestore",
-    "fastify-firestore-typescript",
-    "fastify-firebase-auth",
-    "fastify-firebase-auth-ts"
+    "firebase-admin",
+    "firestore",
+    "auth",
+    "authentication",
+    "google-cloud",
+    "cloud-functions",
+    "cloud-run",
+    "realtime-database",
+    "cloud-storage",
+    "typescript"
   ],
   "type": "module"
 }
