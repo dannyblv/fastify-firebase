@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "fastify-plugin": "^5.1.0",
-    "firebase-admin": "^13.7.0"
+    "firebase-admin": "^13.8.0"
   },
   "devDependencies": {
     "fastify": "^5.8.4",
