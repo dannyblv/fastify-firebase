@@ -1,6 +1,6 @@
 {
   "name": "fastify-firebase",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Fastify v5+ plugin for firebase-admin with TypeScript support, ADC, custom app names, and auto-cleanup",
   "main": "index.js",
   "repository": "https://github.com/dannyblv/fastify-firebase.git",
